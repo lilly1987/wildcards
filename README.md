@@ -34,3 +34,19 @@ wildcards.py # modul file
 wildcards/*.txt # wildcards file
 wildcards/**/*.txt # wildcards file
 ```
+
+### txt file (UTF8)
+
+```
+# 주석
+a,b
+{b|c|__anotherfile__}
+__anotherfile__
+```
+result
+```
+a,b
+b
+c
+__anotherfile__
+```
