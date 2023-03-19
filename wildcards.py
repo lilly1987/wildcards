@@ -10,7 +10,7 @@ print("wildcards")
 
 # 가져올 파일 목록
 card_path=os.path.dirname(__file__)+"\\wildcards\\**\\*.txt"
-
+print(f"wildcards card_path {card_path}")
 
 # 정규식
 resub  = re.compile(r"(\{)([^\{\}]*)(\})")
