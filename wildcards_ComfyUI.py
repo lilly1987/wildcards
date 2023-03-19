@@ -118,7 +118,9 @@ class CLIPTextEncodeWildcards:
     CATEGORY = "conditioning"
 
     def encode(self, clip, text):
-        return ([[clip.encode(run(text)), {}]], )
+        r=run(text)
+        print(f"encode : {r}")
+        return ([[clip.encode(r), {}]], )
         
         
 NODE_CLASS_MAPPINGS = {
