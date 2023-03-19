@@ -20,9 +20,17 @@ python wildcards.py
 ```
 import wildcards as w
 
-# 가져올 파일 목록
+# 가져올 파일 목록. get wildcards file
 w.card_path=os.path.dirname(__file__)+"\\wildcards\\**\\*.txt"
 
-# 실행
+# 실행 run
 print(w.run("a{__b__|{c|}|{__d__|e|}|f|}g____ __my__"))
+```
+
+### 
+
+```
+wildcards.py # modul file
+wildcards/*.txt # wildcards file
+wildcards/**/*.txt # wildcards file
 ```
