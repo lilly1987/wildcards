@@ -80,7 +80,7 @@ def card_load():
                 continue
             cards[file_name]+=[line]
             #print(f"line : {line}")
-    #print(f"cards : {cards}")
+    print(f"cards : {len(cards)}")
 
 # 실행기
 def run(text):
