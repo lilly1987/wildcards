@@ -51,11 +51,15 @@ def card_loop(text):
     bak=text
     for i in range(1, 50):
         tmp=recard.sub(card, bak)
+        #print(f"card l : {bak}")
         if bak==tmp :
-            tmp=sub_loop(text)
+            tmp=sub_loop(tmp)
+            
         if bak==tmp :
+            #print(f"card le : {bak}")
             return tmp
         bak=tmp
+    #print(f"card le : {bak}")
     return bak
     
 # 카드 파일 읽기
@@ -82,6 +86,7 @@ def card_load():
             cards[file_name]+=[line]
             #print(f"line : {line}")
     print(f"cards : {len(cards)}")
+    #print(f"cards : {cards.keys()}")
 
 # 실행기
 def run(text):
@@ -97,7 +102,7 @@ def run(text):
 # ============================================================
 
 # 테스트용
-test="a{__b__|{c|}|{__d__|e|}|f|}g____ __my__"
+test="__my__"
 
 #m = p.sub(sub, test)
 #print(m)
