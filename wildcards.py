@@ -7,8 +7,15 @@ print("wildcards")
 
 # ============================================================
 
+# 가져올 파일 목록
+card_path=os.path.dirname(__file__)+"\\wildcards\\**\\*.txt"
+
+
+# 정규식
 resub  = re.compile(r"(\{)([^\{\}]*)(\})")
 recard = re.compile(r"(__)(.*?)(__)")
+
+# 카드 목록
 cards = {}
 
 # | 로 입력된것중 하나 가져오기
@@ -52,12 +59,10 @@ def card_loop(text):
     
 # 카드 파일 읽기
 def card_load():
-    global cards 
+    global cards , card_path
     cards = {}
-    path=os.path.dirname(__file__)
-    t_path=path+"\\wildcards\\**\\*.txt"
     #print(f"path : {path}")
-    files=glob.glob(t_path, recursive=True)
+    files=glob.glob(card_path, recursive=True)
     #print(f"files : {files}")
     
     for file in files:
@@ -85,7 +90,7 @@ def run(text):
     bak=text
     #print(f"text : {text}")
     result=card_loop(text)
-    print(f"result : {result}")
+    #print(f"result : {result}")
     return result
     
 # ============================================================
