@@ -3,7 +3,7 @@ import random
 import re
 
 print("wildcards")
-print(os.getcwd())
+#print(os.getcwd())
 
 # ============================================================
 
@@ -11,11 +11,13 @@ resub  = re.compile(r"(\{)([^\{\}]*)(\})")
 recard = re.compile(r"(__)(.*?)(__)")
 cards = {}
 
+# | 로 입력된것중 하나 가져오기
 def sub(match):
     m=match.group(2).split("|")
     #print(f"sub : {m}")
     return random.choice(m)
 
+# | 로 입력된것중 하나 가져오기 반복
 def sub_loop(text):
     bak=text
     for i in range(1, 50):
@@ -24,19 +26,19 @@ def sub_loop(text):
             return tmp
         bak=tmp
     return bak
-    
-def card(match):
-    print(f"card i : {match.group(2)}")
-    if match.group(2) in cards :
-        #print(f"y")
-        r=random.choice(cards[match.group(2)])        
-    else :
-        #print(f"n")        
-        r= match.group(2)
-    print(f"card r : {r}")
-    return r
-    #return cards[match.group(2)] if match.group(2) in cards else match.group(2)
 
+# 카드 중에서 가져오기
+def card(match):
+    #print(f"card i : {match.group(2)}")
+    if match.group(2) in cards :
+        r=random.choice(cards[match.group(2)])        
+    else :    
+        r= match.group(2)
+    #print(f"card r : {r}")
+    return r
+    
+
+# 카드 중에서 가져오기 반복. | 의 것도 처리
 def card_loop(text):
     bak=text
     for i in range(1, 50):
@@ -48,14 +50,11 @@ def card_loop(text):
         bak=tmp
     return bak
     
-    
+# 카드 파일 읽기
 def card_load():
     global cards 
     cards = {}
     path=os.path.dirname(__file__)
-    #print(f"path : {path}")
-    #path=os.path.join(path)
-    #print(f"path : {path}")
     t_path=path+"\\wildcards\\**\\*.txt"
     #print(f"path : {path}")
     files=glob.glob(t_path, recursive=True)
@@ -71,12 +70,14 @@ def card_load():
         lines = f.readlines()
         for line in lines:
             line=line.strip()
+            # 주석 빈줄 제외
             if line.startswith("#") or len(line)==0:
                 continue
             cards[file_name]+=[line]
             #print(f"line : {line}")
-    print(f"cards : {cards}")
-    
+    #print(f"cards : {cards}")
+
+# 실행기
 def run(text):
 
     card_load()
