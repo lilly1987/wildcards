@@ -1,5 +1,7 @@
 # wildcards
 
+# this project merge to https://github.com/lilly1987/ComfyUI_node_Lilly 
+
 ### ex
 
 - form
