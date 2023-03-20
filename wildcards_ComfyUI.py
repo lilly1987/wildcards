@@ -90,8 +90,7 @@ def card_load():
 def run(text):
 
     card_load()
-    
-    bak=text
+
     #print(f"text : {text}")
     result=card_loop(text)
     print(f"result : {result}")
